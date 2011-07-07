@@ -9,21 +9,34 @@
         prev:   '#prev'
     });
 
+    $('#first').click(function() {
+      $('#events').cycle(0);
+      return false;
+    });
+
+    $('#last').click(function() {
+      $('#events').cycle(1);
+      return false;
+    });
+
     // Relative times
     jQuery("abbr.timeago").timeago();
 
     // Autorefresh
-    setTimeout( "window.location.reload()", 3600*1000 );
+    setTimeout( "window.location.reload()", 60*5*1000 );
   });
 
 #main-bar.pos-left
   %h1= "#{@calendar.title}'s meetings"
 %p
-  %a#prev{ :href=> '#' } Prev
+  %a#first{ :href => '#' } First
+  = '/'
+  %a#last{ :href => '#' } Last
   = '~'
-  %a#next{ :href=> '#' } Next
+  %a#prev{ :href => '#' } Prev
+  = '/'
+  %a#next{ :href => '#' } Next
 
 #events
   - for event in @calendar.events do
     != haml :'_event', :layout => false, :locals => { :event => event }
-

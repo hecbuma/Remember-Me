@@ -5,13 +5,13 @@
       %em
         %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %B %e, %I:%M%p"
     %h3= event.where
+    -#%p
+    -#  %em Created:
+    -#  %abbr.timeago{ :title => event.updated.iso8601 }= event.updated
     %p
-      %em Created:
-      %abbr.timeago{ :title => event.updated.iso8601 }= event.updated
-  %p
-    %ul.assistants
-      - for person in event.attendees do
-        %li
-          = (person[:role] == 'organizer' ? '*' : '' )
-          %a{ :href=> "mailto:#{person[:email]}" }= person[:name]
-
+      %ul.assistants
+        - for person in event.attendees do
+          - name = person[:name].split(' ').first rescue 'Attendee'
+          %li
+            = (person[:role] == 'organizer' ? '*' : '' )
+            %a{ :href=> "mailto:#{person[:email]}" }= name
