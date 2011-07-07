@@ -13,8 +13,8 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 
   GOOGLE_LOGIN   = 'meetings@crowdint.com'
-  GOOGLE_PASS    = ''
-  CALENDAR       = ''
+  GOOGLE_PASS    = 'cr0wd1nt'
+  CALENDAR       = 'meetings%40crowdint.com'
 end
 
 get '/' do

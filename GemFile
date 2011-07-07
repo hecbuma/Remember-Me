@@ -9,4 +9,5 @@ gem 'require_all'
 group :development do
   gem 'awesome_print', :require => 'ap'
   gem 'wirble'
+  gem 'heroku'
 end
