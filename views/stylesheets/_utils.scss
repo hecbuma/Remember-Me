@@ -1,0 +1,14 @@
+// Utils
+.debug { border: 1px solid red; }
+
+.text-left { text-align: left; }
+.text-center{ text-align: center; }
+.text-right{ text-align: right; }
+
+.pos-left{ float: left; }
+.pos-center { margin: 0px auto; }
+.pos-right { float: right; }
+
+.lower{ text-transform:lowercase; }
+.upper{ text-transform:uppercase; }
+.title{ text-transform:capitalize; }

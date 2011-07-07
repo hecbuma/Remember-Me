@@ -1,0 +1,104 @@
+@import "compass";
+@import "compass/reset";
+@import "utils";
+
+$font: "Times New Roman", Times, Georgia, serif;
+
+* { margin:0; padding:0; border:0; outline:0; }
+
+body {
+  font-size: 15px;
+  font-face: $font;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  text-align: right;
+  letter-spacing: 2px;
+  background-color: #fff;
+}
+
+p { padding: 10px; }
+em { color: #333; }
+hr { border-bottom: 1 px dashed #ccc; }
+
+a {
+  color: #333;
+  text-decoration: none;
+  :hover { color: #d34; }
+}
+
+h1 {
+  display: inline-block;
+  font-size: 50px;
+  line-height: 55px;
+  font-weight: bold;
+  letter-spacing: 0;
+  color: #000;
+  font-style: italic;
+  border-bottom: 5px solid #d34;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 45px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 30px;
+  line-height: 35px;
+  font-style: normal;
+  font-weight: normal;
+  color:#333;
+}
+
+#main-bar {
+  h1 {
+    width: 300px;
+    background-color: #d34;
+    color: #fff;
+    padding: 0px 15px;
+    display: block;
+    font:italic bold 30px $font;
+    margin-bottom: 10px;
+  }
+  clear: all;
+}
+
+#events{
+  margin: 10px;
+  padding: 10px;
+  min-height: 450px;
+}
+
+.event{
+  margin-top: 25px;
+  text-align: right;
+  width: 100% !important;
+  &.em {
+    color: #333;
+    em { color: #d34; }
+  }
+}
+
+ul.assistants {
+  li {
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    margin: 2px;
+    padding: 5px 10px;
+    /*min-width: 125px;*/
+    border: 1px solid #ddd;
+    background: #eee;
+
+    &.em {
+      font-weight: bold;
+      color: white;
+    }
+  }
+ }
+
+
+
+

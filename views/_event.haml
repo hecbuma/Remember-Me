@@ -1,0 +1,18 @@
+.event{ :class =>  (time_diff_in_minutes(event.start_time) < 60 ? :em : nil) }
+  %p
+    %h1.title= event.title
+  %p
+    %h2
+      %em
+        %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %e, %I:%M%p"
+    %h3= event.where
+    %p
+      %em Created:
+      %abbr.timeago{ :title => event.updated.iso8601 }= event.updated
+  %p
+    %ul.assistants
+      - for person in event.attendees do
+        %li
+          = (person[:role] == 'organizer' ? '*' : '' )
+          %a{ :href=> "mailto:#{person[:email]}" }= person[:name]
+
