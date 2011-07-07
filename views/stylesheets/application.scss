@@ -59,22 +59,23 @@ h3 {
     color: #fff;
     padding: 0px 15px;
     display: block;
-    font:italic bold 30px $font;
-    margin-bottom: 10px;
+    font: italic bold 25px $font;
   }
   clear: all;
 }
 
 #events{
+  /*border: 1px dashed #ccc;*/
   margin: 10px;
   padding: 10px;
-  min-height: 450px;
+  height: 400px;
 }
 
 .event{
-  margin-top: 25px;
+  margin: none;
+  padding: 5px;
   text-align: right;
-  width: 100% !important;
+  width: 98% !important;
   &.em {
     color: #333;
     em { color: #d34; }
@@ -84,21 +85,14 @@ h3 {
 ul.assistants {
   li {
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
     float: right;
     margin: 2px;
     padding: 5px 10px;
-    /*min-width: 125px;*/
-    border: 1px solid #ddd;
-    background: #eee;
-
-    &.em {
-      font-weight: bold;
-      color: white;
-    }
+    color: #FFF;
+    border: 1px solid #919191;
+    background: #b4b3b3;
+    font-weight: bold;
+    a { color: #FFF; }
   }
  }
-
-
-
-

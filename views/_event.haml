@@ -1,10 +1,9 @@
 .event{ :class =>  (time_diff_in_minutes(event.start_time) < 60 ? :em : nil) }
-  %p
-    %h1.title= event.title
+  %h1.title= event.title
   %p
     %h2
       %em
-        %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %e, %I:%M%p"
+        %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %B %e, %I:%M%p"
     %h3= event.where
     %p
       %em Created:
