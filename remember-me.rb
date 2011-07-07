@@ -1,5 +1,6 @@
-require 'compass'
+require 'rubygems'
 require 'sinatra'
+require 'compass'
 require 'erb'
 require 'haml'
 require 'gcal4ruby'
