@@ -19,12 +19,22 @@ configure do
 end
 
 get '/' do
-  # Step 1
+  # Connect to Google Calendar
   service = GCal4Ruby::Service.new
   service.authenticate(GOOGLE_LOGIN, GOOGLE_PASS)
 
-  # Step 2
+  # Get the calendar
   @calendar = GCal4Ruby::Calendar.find(service, { :id => CALENDAR }, :first)
+
+  # Get all events
+  #@events = @calendar.events
+
+  # Get only the future events
+  @events = GCal4Ruby::Event.find(service, {}, {
+      :futureevents   => true,
+      :calendar       => @calendar.id,
+      'max-results'   => 10
+  }).sort{ |a,b| a.start_time <=> b.start_time }
 
   haml :index
 end

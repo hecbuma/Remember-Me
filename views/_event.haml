@@ -1,9 +1,19 @@
-.event{ :class =>  (time_diff_in_minutes(event.start_time) < 60 ? :em : nil) }
-  %h1.title= event.title
-  %p
+.event
+
+  - if event.start_time < Time.now
+    %h1.title
+      %strike= event.title
     %h2
       %em
-        %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %B %e, %I:%M%p"
+        Finished
+        %abbr.timeago{ :title => event.end_time.iso8601 }= event.end_time.strftime "%A %B %e, %I:%M%p"
+  - else
+    %h1.title= event.title
+
+  %p
+    %h2
+      %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %B %e, %I:%M%p"
+
     %h3= event.where
     -#%p
     -#  %em Created:

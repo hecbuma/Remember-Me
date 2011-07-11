@@ -1,6 +1,7 @@
 :javascript
   jQuery(document).ready(function() {
     // Carrousel
+    //*
     $('#events').cycle({
         fx: 'scrollDown',
         speed:  500,
@@ -8,6 +9,7 @@
         next:   '#next',
         prev:   '#prev'
     });
+    //*/
 
     $('#first').click(function() {
       $('#events').cycle(0);
@@ -23,7 +25,7 @@
     jQuery("abbr.timeago").timeago();
 
     // Autorefresh
-    setTimeout( "window.location.reload()", 60*5*1000 );
+    setTimeout( "window.location.reload()", 60*15*1000 );
   });
 
 #main-bar.pos-left
@@ -36,7 +38,9 @@
   %a#prev{ :href => '#' } Prev
   = '/'
   %a#next{ :href => '#' } Next
+  = '~'
+  = "Total(#{@events.count})"
 
 #events
-  - for event in @calendar.events do
+  - for event in @events do
     != haml :'_event', :layout => false, :locals => { :event => event }
