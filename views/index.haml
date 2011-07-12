@@ -1,7 +1,6 @@
 :javascript
   jQuery(document).ready(function() {
     // Carrousel
-    //*
     $('#events').cycle({
         fx: 'scrollDown',
         speed:  500,
@@ -9,7 +8,6 @@
         next:   '#next',
         prev:   '#prev'
     });
-    //*/
 
     $('#first').click(function() {
       $('#events').cycle(0);
@@ -21,11 +19,9 @@
       return false;
     });
 
-    // Relative times
-    jQuery("abbr.timeago").timeago();
-
-    // Autorefresh
+    setTimeout( 'jQuery("abbr.timeago").timeago();', 60*1000 );
     setTimeout( "window.location.reload()", 3600*60*1000 );
+    jQuery("abbr.timeago").timeago();
     
     // Auto hidden 
     $(".auto-hidden").hide('fast');

@@ -1,20 +1,25 @@
-.event
-  %h1.title= event.title
+:ruby
+  #event_date = (event.recurrence.nil? ? event.start_time : event.recurrence.start_time)
+  event_date = event.start_time
+  event_is_today = event_date.to_date == Date.today
 
-  - if event.start_time < Time.now
+.event{ :class => (event_is_today ? 'em' : nil )}
+  %h1.title= event.title
+  - if event_date < Time.now
     %h2
       %em
         Started
-        %abbr.timeago{ :title => event.end_time.iso8601 }= event.end_time.strftime "%A %B %e, %I:%M%p"
-
+        %abbr.timeago{ :title => event_date.iso8601 }
+          = event_date.strftime "%A %B %e, %I:%M%p"
   %p
     %h2
-      %abbr{ :title => event.start_time.iso8601 }= event.start_time.strftime "%A %B %e, %I:%M%p"
-
+      %abbr{ :title => event.start_time.iso8601 }
+        - if event_is_today
+          %em= event_date.strftime "Today %I:%M%p"
+        - else
+          = event_date.strftime "%A %B %e, %I:%M%p"
     %h3= event.where
-    -#%p
-    -#  %em Created:
-    -#  %abbr.timeago{ :title => event.updated.iso8601 }= event.updated
+
     %p
       %ul.assistants
         - for person in event.attendees do

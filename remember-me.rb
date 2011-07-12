@@ -5,7 +5,9 @@ require 'erb'
 require 'haml'
 require 'gcal4ruby'
 require 'require_all'
+require 'bundler'
 
+Bundler.require
 require_all 'lib'
 
 configure do
@@ -19,6 +21,8 @@ configure do
 end
 
 get '/' do
+  # http://code.google.com/intl/es-MX/apis/calendar/data/2.0/reference.html
+
   # Connect to Google Calendar
   service = GCal4Ruby::Service.new
   service.authenticate(GOOGLE_LOGIN, GOOGLE_PASS)
@@ -29,12 +33,16 @@ get '/' do
   # Get all events
   #@events = @calendar.events
 
-  # Get only the future events
+  # Get next week events
   @events = GCal4Ruby::Event.find(service, {}, {
-      :futureevents   => true,
-      :calendar       => @calendar.id,
-      'max-results'   => 10
-  }).sort{ |a,b| a.start_time <=> b.start_time }
+      'calendar'        => @calendar.id,
+      'singleevents'    => true,                      # Indicates whether recurring events should be expanded or represented as a single event.
+      'start-min'       => Date.today.to_date,        # Start range
+      'start-max'       => 1.week.from_now.to_date,   # End range
+      'max-results'     => 25,                        # 25 by default
+      'orderby'         => 'starttime',               # Specifies order of entries in a feed.
+      'sortorder'       => 'ascending'                # Specifies direction of sorting.
+  })
 
   haml :index
 end
