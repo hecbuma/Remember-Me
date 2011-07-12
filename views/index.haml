@@ -25,22 +25,34 @@
     jQuery("abbr.timeago").timeago();
 
     // Autorefresh
-    setTimeout( "window.location.reload()", 60*15*1000 );
+    setTimeout( "window.location.reload()", 3600*60*1000 );
+    
+    // Auto hidden 
+    $(".auto-hidden").hide('fast');
+    var i = null;
+    $("#main-bar").mousemove(function() {
+        clearTimeout(i);
+        $(".auto-hidden").show('fast');
+        i = setTimeout('$(".auto-hidden").hide("fast");', 10000);
+    }).mouseleave(function() {
+        clearTimeout(i);
+        $(".auto-hidden").hide('fast');  
+    });
   });
 
-#main-bar.pos-left
+#main-bar
   %h1= "#{@calendar.title}'s meetings"
-%p
-  %a#first{ :href => '#' } First
-  = '/'
-  %a#last{ :href => '#' } Last
-  = '~'
-  %a#prev{ :href => '#' } Prev
-  = '/'
-  %a#next{ :href => '#' } Next
-  = '~'
-  = "Total(#{@events.count})"
+  %p#menu
+    %h3.auto-hidden
+      %a#prev{ :href => '#' } &laquo; Prev
+      = '~'
+      %a#next{ :href => '#' } Next &raquo;
+    .auto-hidden
+      %em= @events.count
+      meetings in total.
 
 #events
   - for event in @events do
     != haml :'_event', :layout => false, :locals => { :event => event }
+
+      

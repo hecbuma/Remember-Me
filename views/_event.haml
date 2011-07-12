@@ -1,14 +1,11 @@
 .event
+  %h1.title= event.title
 
   - if event.start_time < Time.now
-    %h1.title
-      %strike= event.title
     %h2
       %em
-        Finished
+        Started
         %abbr.timeago{ :title => event.end_time.iso8601 }= event.end_time.strftime "%A %B %e, %I:%M%p"
-  - else
-    %h1.title= event.title
 
   %p
     %h2
