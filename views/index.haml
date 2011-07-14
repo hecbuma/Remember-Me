@@ -34,6 +34,11 @@
         clearTimeout(i);
         $(".auto-hidden").hide('fast');  
     });
+
+    $(window).resize(function() {
+      $('body').css('font-size', ($(window).width() * 1.2 / 1440) + 'em');
+    });
+
   });
 
 #main-bar

@@ -7,7 +7,7 @@ $font: "Times New Roman", Times, Georgia, serif;
 * { margin:0; padding:0; border:0; outline:0; }
 
 body {
-  font-size: 15px;
+  font-size: 1em;
   font-face: $font;
   -webkit-font-smoothing: antialiased;
   color: #333;
@@ -28,7 +28,7 @@ a {
 
 h1 {
   display: inline-block;
-  font-size: 50px;
+  font-size: 3.125em;
   line-height: 55px;
   font-weight: bold;
   letter-spacing: 0;
@@ -38,14 +38,14 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 2.5em;
   line-height: 45px;
   font-weight: normal;
   font-style: italic;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 1.875em;
   line-height: 35px;
   font-style: normal;
   font-weight: normal;
@@ -86,7 +86,7 @@ h3 {
 ul.assistants {
   li {
     text-align: center;
-    font-size: 13px;
+    font-size: 0.813em;
     float: right;
     margin: 2px;
     padding: 5px 10px;
@@ -97,3 +97,10 @@ ul.assistants {
     a { color: #333; }
   }
  }
+
+@media projection and (min-width:1900px) {
+  body{
+    font-size: 1.5em;
+    line-height: 1em;
+  }
+}
